@@ -22,6 +22,9 @@ std::vector<std::string> Lexer::tokenizeFile( std::string fileName )
 	{
 		throw message;
 	}
+	// Strip comments from the resultant lines
+	util.stripMultiComments(lines);
+	util.stripLineComments(lines);
 	std::string temp;
 	// Tokenize the business
 	// Loop over lines

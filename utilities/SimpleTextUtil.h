@@ -42,6 +42,10 @@ public:
 	// This function is defined in StripComments.cpp
 	void stripLineComments( std::vector<std::string> &fileLines );
 	
+	// This strips the whitespace out of a string. Generally to be used on
+	// single tokens
+	std::string stripWhitespace(std::string str);
+	
 	bool isOperator( char operatorCandidate );
 	// This one is for tokenizing and includes many more one character operator
 	// tokens

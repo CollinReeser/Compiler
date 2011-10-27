@@ -1,10 +1,16 @@
 
 
+class TestClass{
+public:
 int add(int x)
 {return x;}
-
+private:
+};
+/* 
+MULTILINE COMMENT
+*/
 int main(int x)
-{
+{// COMMENT
 	add(a+b);
 	return 0;
 }
