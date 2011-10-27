@@ -1,0 +1,11 @@
+This
+  is a 
+test.
+This is not a comment. The lines below have comments:
+// Hello there! /*
+      // Hello there!
+      			*/
+		// Hello there!
+The following is a/**/ comment/*   */ on the same line: //Woo!
+And again://Woo!
+Yeah.
