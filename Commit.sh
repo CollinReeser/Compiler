@@ -3,6 +3,7 @@ cp -r compileSegments gitCompiler/
 cp -r LexParse gitCompiler/
 cp -r tests gitCompiler/
 cp -r utilities gitCompiler/
+cp -r asm gitCompiler/
 cp Makefile gitCompiler/
 
 cd gitCompiler
