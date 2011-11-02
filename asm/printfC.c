@@ -119,21 +119,15 @@ void printI(int num)
 	return;
 }
 
-void printL(long long num)
+void printLDub(unsigned long long num)
 {
 	char zeroTrip = '1';
-	long long divisor;
+	unsigned long long divisor;
 	char mod;
-	// First print a negative sign if needed
-	if ( num < 0 )
-	{
-		putchar_cr('-');
-		num *= -1;
-	}
 	if (sizeof(long long) == 8)
 	{
 		// Max val of int is 2147483647
-		divisor = 1000000000000000000;
+		divisor = 10000000000000000000;
 	}
 	else if (sizeof(int) == 2)
 	{
@@ -388,26 +382,41 @@ void printDbl(double num)
 	{
 		integerComponent = (floating >> (52 - exponent));
 		floatComponent = ( floating << ( 12 + exponent ) );
-		printf("<Integer component: %lld\n",integerComponent);
+		printf("<Integer component: %llu\n",integerComponent);
 		printf("<Float component: %llu\n",floatComponent);
 	}
-	else if ( exponent > 52  && exponent < 64)
+	else if ( exponent > 52  && exponent < 64)//64)
 	{
-		integerComponent = (floating << (exponent - 52));
+		integerComponent = (floating << (exponent - 52 ));
 		floatComponent = ( floating << ( 12 + exponent ) );
 		printf("><Integer component: %llu\n",integerComponent);
 		printf("><Float component: %llu\n",floatComponent);
 	}
-	else if ( exponent > 62 )
+	else if ( exponent > 63 )
 	{
-		printf(">Integer component: %lld\n",integerComponent);
+		integerComponent = (floating << (exponent - 52));
+		floatComponent = ( floating << ( 12 + exponent ) );
+		printf(">Integer component: %llu\n",integerComponent);
 		printf(">Float component: %llu\n",floatComponent);
 	}
-	(integerComponent) ? printL(integerComponent) : putchar_cr('0');
+	(integerComponent) ? printLDub(integerComponent) : putchar_cr('0');
 	//printf("Float component:%o\n",floatComponent);
 	//printI(integerComponent);
 	// Print the decimal point
 	putchar_cr('.');
+	// Integer component too large to give the fractional component credence
+	if ( exponent > 49 )
+	{
+		floatSec[0] = '0';
+		floatSec[1] = '0';
+		floatSec[2] = '0';
+		floatSec[3] = '0';
+		floatSec[4] = '0';
+		floatSec[5] = '0';
+		floatSec[6] = 0;
+		fputs_cr(floatSec);
+		return;
+	}
 	unsigned long long total = 0;
 	long long divvy = 5000000000000000000;
 	unsigned long long mask = 0b1000000000000000000000000000000000000000000000000000000000000000;
