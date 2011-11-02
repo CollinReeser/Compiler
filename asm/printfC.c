@@ -14,6 +14,7 @@
 // and to implement a parsing system
 
 extern void fputs_cr(char* str);
+extern void putchar_cr(char x);
 extern int fltBitsToInt(float num);
 void printI(int num);
 void printF(double num);
@@ -25,8 +26,6 @@ void printf_cr(char* buf , ...)
 	va_list args;
 	va_start(args, buf);
 	//va_arg(args, /*type: ie double*/);
-	char str[2];
-	str[1] = 0;
 	char c = buf[0];
 	char i = 0;
 	while ( c != 0 )
@@ -56,8 +55,7 @@ void printf_cr(char* buf , ...)
 				break;
 			// Simply print the character
 			default:
-				str[0] = c;
-				fputs_cr(str);
+				putchar_cr(c);
 				break;
 		}
 		i++;
@@ -73,14 +71,11 @@ void printI(int num)
 {
 	char zeroTrip = '1';
 	int divisor;
-	char str[2];
-	str[1] = 0;
 	char mod;
 	// First print a negative sign if needed
 	if ( num < 0 )
 	{
-		str[0] = '-';
-		fputs_cr(str);
+		putchar_cr('-');
 		num *= -1;
 	}
 	if (sizeof(int) == 4)
@@ -107,15 +102,13 @@ void printI(int num)
 		{
 			if ( zeroTrip != '1' )
 			{
-				str[0] = mod + '0';
-				fputs_cr(str);
+				putchar_cr(mod + '0');
 			}
 		}
 		else
 		{
 			zeroTrip = '0';
-			str[0] = mod + '0';
-			fputs_cr(str);
+			putchar_cr(mod + '0');
 		}
 	}
 	return;
@@ -127,28 +120,71 @@ void printI(int num)
 void printF(double num)
 {
 	float fVal = (float)num;
+	//printf("%f << Original value\n",fVal);
 	unsigned int intRep = fltBitsToInt(fVal);
-	printf("\nINTEGER BITS OF FLOAT:%d\n",intRep);
-	char str[2];
-	str[1] = 0;
+	//printf("\nINTEGER BITS OF FLOAT:%d\n",intRep);
 	unsigned int sign = intRep >> 31;
-	printf("Sign:%u\n",sign);
+	//printf("Sign:%u\n",sign);
 	unsigned int mantissa = ( intRep << 1 ) >> 24;
-	printf("Mantissa:Octal:%o\nMantissa:Dec:%u\n",mantissa);
+	//printf("Mantissa:Octal:%o\nMantissa:Dec:%u\n",mantissa);
 	unsigned int floating = ( ( intRep << 9 ) >> 9 ) | 0b100000000000000000000000;
-	printf("Float:%u\n",floating);
+	//printf("Float:%u\n",floating);
 	if ( sign != 0 )
 	{
-		str[0] = '-';
-		fputs_cr(str);
+		putchar_cr('-');
 	}
 	unsigned int exponent = mantissa - 127;
-	printf("Exponent:%d\n",exponent);
+	//printf("Exponent:%d\n",exponent);
 	int integerComponent = (floating >> (23 - exponent));
-	printf("Integer component:%d\n",integerComponent);
+	unsigned int floatComponent = floating << ( 9 + exponent );
+	//printf("Integer component:%d\n",integerComponent);
+	//printf("Float component:%o\n",floatComponent);
 	printI(integerComponent);
 	// Print the decimal point
-	str[0] = '.';
-	fputs_cr(str);
+	putchar_cr('.');
+	unsigned int total = 0;
+	int divvy = 500000000;
+	unsigned int mask = 0b10000000000000000000000000000000;
+	//printf("\nMask:%o\n",mask);
+	int i;
+	for ( i = 0; i < 23; i++ )
+	{
+		if ( ( ( mask >> i ) & floatComponent ) != 0 )
+		{
+			total += divvy;
+		}
+		divvy = divvy / 2;
+	}
+	//printf("Total: %u\n",total);
+	char floatSec[10];
+	floatSec[9] = 0;
+	
+	
+	int divisor = 100000000;
+	int mod;
+	for ( i = 0; divisor >= 1; divisor /= 10, i++ )
+	{
+		mod = total / divisor;
+		total %= divisor;
+		floatSec[i] = mod + '0';
+	}
+	//printf("floatSec: %s\n",floatSec);
+	char promote = 0;
+	// Rounding algorithm
+	for ( i = 9; i > 5; i-- )
+	{
+		promote = 0;
+		if ( floatSec[i] > '4' )
+		{
+			promote = 1;
+		}
+		if ( promote == 1 )
+		{
+			floatSec[i-1] += 1;
+		}
+		floatSec[i] = 0;
+	}
+	//printf("floatSec: %s\n",floatSec);
+	fputs_cr(floatSec);
 	return;
 }

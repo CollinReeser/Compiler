@@ -1,7 +1,7 @@
 ; Name: fltBitsToInt
 ; Description: This program takes in a float as a parameter, and then forces
 ; the return value to be an integer that simply contains the bits of the float
-; passed, without converting it
+; passed, without cast-converting it
 
 		global	fltBitsToInt
 		
