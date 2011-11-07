@@ -374,30 +374,39 @@ void printDbl(double num)
 	floating |= 0b10000000000000000000000000000000000000000000000000000;
 	//floating |= 0b000000000000000000000000;
 	long long exponent = mantissa - 1023;
-	printf("Floating: %llu\n",floating);
-	printf("Exponent: %lld\n",exponent);
+	//printf("Floating: %llu\n",floating);
+	//printf("Exponent: %lld\n",exponent);
 	unsigned long long integerComponent;
 	unsigned long long floatComponent;
-	if ( exponent < 53 )
+	if ( exponent < 53 && exponent > -12 )
 	{
 		integerComponent = (floating >> (52 - exponent));
 		floatComponent = ( floating << ( 12 + exponent ) );
-		printf("<Integer component: %llu\n",integerComponent);
-		printf("<Float component: %llu\n",floatComponent);
+		//printf("<Integer component: %llu\n",integerComponent);
+		//printf("<Float component: %llu\n",floatComponent);
 	}
-	else if ( exponent > 52  && exponent < 64)//64)
+	else if ( exponent > 52 && exponent < 64)
 	{
 		integerComponent = (floating << (exponent - 52 ));
 		floatComponent = ( floating << ( 12 + exponent ) );
-		printf("><Integer component: %llu\n",integerComponent);
-		printf("><Float component: %llu\n",floatComponent);
+		//printf("><Integer component: %llu\n",integerComponent);
+		//printf("><Float component: %llu\n",floatComponent);
+	}
+	else if ( exponent < -11 )
+	{
+		char* strErr = "\nRuntime Warning: printf_cr: Exponents smaller than -11 currently unsupported.\n";
+		fputs_cr(strErr);
+		return;
 	}
 	else if ( exponent > 63 )
 	{
-		integerComponent = (floating << (exponent - 52));
-		floatComponent = ( floating << ( 12 + exponent ) );
-		printf(">Integer component: %llu\n",integerComponent);
-		printf(">Float component: %llu\n",floatComponent);
+		char* strErr = "\nRuntime Warning: printf_cr: Exponents larger than 63 currently unsupported.\n";
+		fputs_cr(strErr);
+		return;
+		//integerComponent = (floating << (exponent - 52));
+		//floatComponent = ( floating << ( 12 + exponent ) );
+		//printf(">Integer component: %llu\n",integerComponent);
+		//printf(">Float component: %llu\n",floatComponent);
 	}
 	(integerComponent) ? printLDub(integerComponent) : putchar_cr('0');
 	//printf("Float component:%o\n",floatComponent);

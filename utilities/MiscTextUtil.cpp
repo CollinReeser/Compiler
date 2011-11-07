@@ -36,5 +36,31 @@ bool SimpleTextUtil::isOperatorT( char operatorCandidate )
 
 std::string SimpleTextUtil::stripWhitespace(std::string str)
 {
-	while(true){}
+	for ( int i = 0; i < str.size(); i++ )
+	{
+		if ( str.at(i) == ' ' || str.at(i) == '\t' || str.at(i) == '\n' || 
+			str.at(i) == '\r' )
+		{
+			str.erase( str.begin() + i );
+			i--;
+		}
+		else
+		{
+			break;
+		}
+	}
+	for ( int i = str.size() - 1; i > -1; i-- )
+	{
+		if ( str.at(i) == ' ' || str.at(i) == '\t' || str.at(i) == '\n' || 
+			str.at(i) == '\r')
+		{
+			str.erase( str.end() - i );
+			i--;
+		}
+		else
+		{
+			break;
+		}
+	}
+	return str;
 }

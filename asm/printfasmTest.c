@@ -37,11 +37,11 @@ int main(int argc , char** argv)
 	//printf_cr("-----------------------\n");
 	//printf_cr(str,-123456,.12345678);
 	//printf(str,-123456,.12345678);
-	printf_cr("-----------------------\n");
-	printf_cr("Dubs: %b\n",11234567890987650000.9);
-	printf("Dubs: %f\n",11234567890987650000.9);
 	//printf_cr("-----------------------\n");
-	//printf_cr("Dubs: %b\n",.0001);
-	//printf("Dubs: %f\n",.0001);
+	printf_cr("Dubs: %b\n",-11234567890987650000.9);
+	printf("Dubs: %f\n",-11234567890987650000.9);
+	//printf_cr("-----------------------\n");
+	//printf_cr("Dubs: %b\n",.0003);
+	//printf("Dubs: %f\n",.0008);
 	return 0;
 }

@@ -14,6 +14,10 @@ public:
 private:
 	std::vector<std::string> internalTokenizeFix( 
 		std::vector<std::string> tokens );
+	std::vector<std::string> internalRemoveWhitespace( 
+		std::vector<std::string> tokens );
+	std::vector<std::string> internalRemoveNullTokens( 
+		std::vector<std::string> tokens );
 };
 
 #endif

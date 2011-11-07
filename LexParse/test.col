@@ -11,6 +11,16 @@ MULTILINE COMMENT
 */
 int main(int x)
 {// COMMENT
+	int a;
+	int b;
+	b += a;
+	a=5;
+	if ( a == b)
+	{
+		throw(dragons);
+	}
+	a << 2;
+	a >> 4;
 	add(a+b);
 	return 0;
 }

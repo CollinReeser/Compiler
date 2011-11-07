@@ -79,25 +79,149 @@ std::vector<std::string> Lexer::tokenizeFile( std::string fileName )
 		tokens.push_back( temp );
 		temp.clear();
 	}
+	// Remove whitespace from the tokens
+	tokens = Lexer::internalRemoveWhitespace( tokens);
 	// Fix certain tokenizing errors, like two '<'s next to eachother not being
 	// tokenized as "<<". Basically do some compaction or expansion as needed
 	tokens = Lexer::internalTokenizeFix( tokens );
+	// Remove empty tokens ( size zero )
+	tokens = Lexer::internalRemoveNullTokens( tokens );
 	// Return tokenized result
 	return tokens;
 }
-
 
 std::vector<std::string> Lexer::internalTokenizeFix( 
 	std::vector<std::string> tokens )
 {
 	// Proceed to do this in a terribly inefficient way:
 	
-	// Fix bitshifts
 	for ( int i = 0; i < tokens.size(); i++ )
 	{
-		
+		// Fix bitshifts
+		if ( tokens.at( i ) == "<" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "<" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "<<";
+		}
+		else if ( tokens.at( i ) == ">" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == ">" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = ">>";
+		}
+		// Fix arithmetic equals
+		else if ( tokens.at( i ) == "-" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "-=";
+		}
+		else if ( tokens.at( i ) == "+" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "+=";
+		}
+		else if ( tokens.at( i ) == "/" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "/=";
+		}
+		else if ( tokens.at( i ) == "*" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "*=";
+		}
+		else if ( tokens.at( i ) == "%" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "%=";
+		}
+		// Fix logical tests
+		else if ( tokens.at( i ) == "!" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "!=";
+		}
+		else if ( tokens.at( i ) == "=" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "==";
+		}
+		// Fix increments and decrements
+		else if ( tokens.at( i ) == "+" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "+" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "++";
+		}
+		else if ( tokens.at( i ) == "-" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "-" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "--";
+		}
+		// Fix bitwise equals
+		else if ( tokens.at( i ) == "^" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "^=";
+		}
+		else if ( tokens.at( i ) == "&" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "&=";
+		}
+		else if ( tokens.at( i ) == "|" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "|=";
+		}
+		else if ( tokens.at( i ) == "~" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "=" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "~=";
+		}
+		// Fix logical operators
+		else if ( tokens.at( i ) == "&" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "&" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "&&";
+		}
+		else if ( tokens.at( i ) == "|" && i + 1 != tokens.size() &&
+			tokens.at(i + 1) == "|" )
+		{
+			tokens.erase( tokens.begin() + i + 1 );
+			tokens[i] = "||";
+		}
 	}
 	return tokens;
 }
 
+std::vector<std::string> Lexer::internalRemoveWhitespace( 
+	std::vector<std::string> tokens )
+{
+	SimpleTextUtil util;
+	for ( int i = 0; i < tokens.size(); i++ )
+	{
+		tokens[i] = util.stripWhitespace( tokens.at(i) );
+	}
+	return tokens;
+}
 
+std::vector<std::string> Lexer::internalRemoveNullTokens( 
+	std::vector<std::string> tokens )
+{
+	return tokens;
+}

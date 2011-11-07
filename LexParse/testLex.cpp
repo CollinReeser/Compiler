@@ -15,6 +15,10 @@ int main(int argc , char** argv)
 		for ( int i = 0; i < tokens.size(); i++ )
 		{
 			cout << tokens.at(i) << endl;
+			if ( tokens.at(i).size() == 0 )
+			{
+				cout << "HIT" << endl;
+			}
 		}
 	}
 	catch (string msg)
