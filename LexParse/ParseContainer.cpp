@@ -10,23 +10,31 @@ ParseContainer::ParseContainer( std::vector<std::string> tokens )
 	ParseContainer::curTok = tokens.begin();
 }
 
-std::string nextToken()
+std::string ParseContainer::nextToken()
 {
-	return (++ParseContainer::curToken)*;
+	return *(++ParseContainer::curTok);
 }
-std::string peekNext()
+std::string ParseContainer::peekNext()
 {
-	std::string temp = (++ParseContainer::curToken)*;
-	ParseContainer::curToken--;
+	std::string temp = *(++ParseContainer::curTok);
+	ParseContainer::curTok--;
 	return temp;
 }
-std::string previousToken()
+std::string ParseContainer::previousToken()
 {
-	return (ParseContainer::curToken--)*;
+	return *(ParseContainer::curTok--);
 }
-std::string peekPrevious()
+std::string ParseContainer::peekPrevious()
 {
-	std::string temp = (--ParseContainer::curToken)*;
-	ParseContainer::curToken++;
+	std::string temp = *(--ParseContainer::curTok);
+	ParseContainer::curTok++;
 	return temp;
+}
+int ParseContainer::size()
+{
+	return ParseContainer::tokens.size();
+}
+bool ParseContainer::atEnd()
+{
+	return ( ParseContainer::curTok == ParseContainer::tokens.end() );
 }

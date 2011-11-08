@@ -90,11 +90,13 @@ std::vector<std::string> Lexer::tokenizeFile( std::string fileName )
 	return tokens;
 }
 
+// This function generates complex operators from adjacent simple ones
+// TODO: Need to handle the case where "1234 + -56", which is tokenized to
+// "1234","+","-","56" is correctly tokenized to "1234","+","-56"
 std::vector<std::string> Lexer::internalTokenizeFix( 
 	std::vector<std::string> tokens )
 {
-	// Proceed to do this in a terribly inefficient way:
-	
+	// Loop over the tokens and fix them
 	for ( int i = 0; i < tokens.size(); i++ )
 	{
 		// Fix bitshifts
@@ -213,6 +215,8 @@ std::vector<std::string> Lexer::internalRemoveWhitespace(
 	std::vector<std::string> tokens )
 {
 	SimpleTextUtil util;
+	// For every token in the list, use the SimpleTextUtil function that strips
+	// whitespace from the beginning and end of the token
 	for ( int i = 0; i < tokens.size(); i++ )
 	{
 		tokens[i] = util.stripWhitespace( tokens.at(i) );
@@ -220,8 +224,16 @@ std::vector<std::string> Lexer::internalRemoveWhitespace(
 	return tokens;
 }
 
+// Remove null token entries
 std::vector<std::string> Lexer::internalRemoveNullTokens( 
 	std::vector<std::string> tokens )
 {
+	for ( int i = 0; i < tokens.size(); i++ )
+	{
+		if ( tokens.at(i).size() == 0 )
+		{
+			tokens.erase(tokens.begin() + i );
+		}
+	}
 	return tokens;
 }

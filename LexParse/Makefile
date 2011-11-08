@@ -7,8 +7,8 @@ tests:	testLex testParse
 testLex:	testLex.o lexer.o ../utilities/MiscTextUtil.o ../utilities/ShuntingYard.o ../utilities/SourceRead.o ../utilities/StripComments.o
 	g++ -o testLex testLex.o lexer.o ../utilities/ShuntingYard.o ../utilities/MiscTextUtil.o ../utilities/SourceRead.o ../utilities/StripComments.o
 	
-testParse:	testParse.o lexer.o parser.o TopLevelContainer.o ClassContainer.o FunctionContainer.o ../utilities/MiscTextUtil.o ../utilities/ShuntingYard.o ../utilities/SourceRead.o ../utilities/StripComments.o
-	g++ -o testParse testParse.o lexer.o parser.o TopLevelContainer.o ClassContainer.o FunctionContainer.o ../utilities/MiscTextUtil.o ../utilities/ShuntingYard.o ../utilities/SourceRead.o ../utilities/StripComments.o
+testParse:	testParse.o lexer.o parser.o TopLevelContainer.o ClassContainer.o FunctionContainer.o ParseContainer.o ../utilities/MiscTextUtil.o ../utilities/ShuntingYard.o ../utilities/SourceRead.o ../utilities/StripComments.o
+	g++ -o testParse testParse.o lexer.o parser.o TopLevelContainer.o ClassContainer.o FunctionContainer.o ParseContainer.o ../utilities/MiscTextUtil.o ../utilities/ShuntingYard.o ../utilities/SourceRead.o ../utilities/StripComments.o
 
 testLex.o:	testLex.cpp
 	g++ -c testLex.cpp

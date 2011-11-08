@@ -12,6 +12,8 @@ public:
 	std::string peekNext();
 	std::string previousToken();
 	std::string peekPrevious();
+	int size();
+	bool atEnd();
 private:
 	std::vector<std::string> tokens;
 	std::vector<std::string>::iterator curTok;

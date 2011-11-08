@@ -10,10 +10,10 @@ using namespace std;
 
 int main(int argc , char** argv)
 {
-	Parser parse;
+	Parser parser;
 	try
 	{
-		TopLevelContainer tree = parse.parse("test.col");
+		TopLevelContainer tree = parser.parse("test.col");
 	}
 	catch (string msg)
 	{
