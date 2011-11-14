@@ -6,14 +6,7 @@
 #include "ClassContainer.h"
 #include "FunctionContainer.h"
 #include "ParseContainer.h"
-
-struct include
-{
-	// The library or user stuff to include
-	std::string fileName;
-	// Whether it is a local or library thing
-	bool isLocal; 
-};
+#include "Structs.h"
 
 class TopLevelContainer
 {
