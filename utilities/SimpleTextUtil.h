@@ -17,6 +17,12 @@ public:
 	// This function is defined within ShuntingYard.cpp
 	std::string convertInfixToPostfix( std::string infix )
 		throw( std::string );
+	// Algorithm that converts a logical expression akin to:
+	// [ 5 < var && 5 > var2 || ( 5 < var3 || true && var < 5 ) ]
+	// into a series of logical statements in the order in which they need to
+	// be evaluated, with information on shorting out of the evaluation and
+	// stuff
+	//LogicalExpression convertLogicalExpression( std::string expression );
 	// This function takes in a file name and returns a vector of strings, each
 	// string is a line in the file. Throws an error message when opening the
 	// requested file fails.

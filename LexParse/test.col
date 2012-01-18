@@ -24,3 +24,20 @@ int main(int x)
 	add(a+b);
 	return 0;
 }
+
+
+
+
+func main takes int var also arrayof arrayof char var2 returns void
+
+int myInt
+bool myBool
+toss arithmetic 2+4 into myInt
+toss logic myInt<6 && myInt>2 into myBool
+if myBool then
+toss 5 into myInt
+endif
+return void
+endfunc
+
+

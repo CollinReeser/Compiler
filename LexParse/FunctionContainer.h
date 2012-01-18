@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "ParseContainer.h"
+#include "StatementContainer.h"
 #include "Structs.h"
 
 class FunctionContainer

@@ -10,6 +10,10 @@
 #define FLT 'f'
 #define CHR 'c'
 #define DUB 'b'
+#define DUBBASE 1023
+#define FLTBASE 127
+#define DUBFRC 52
+#define FLTFRC 23
 
 // Need defines for flags that go along with the different command directives,
 // and to implement a parsing system
@@ -400,11 +404,11 @@ void printDbl(double num)
 	}
 	else if ( exponent > 63 )
 	{
-		char* strErr = "\nRuntime Warning: printf_cr: Exponents larger than 63 currently unsupported.\n";
-		fputs_cr(strErr);
-		return;
-		//integerComponent = (floating << (exponent - 52));
-		//floatComponent = ( floating << ( 12 + exponent ) );
+		//char* strErr = "\nRuntime Warning: printf_cr: Exponents larger than 63 currently unsupported.\n";
+		//fputs_cr(strErr);
+		//return;
+		integerComponent = (floating << (exponent - 52));
+		floatComponent = ( floating << ( 12 + exponent ) );
 		//printf(">Integer component: %llu\n",integerComponent);
 		//printf(">Float component: %llu\n",floatComponent);
 	}
