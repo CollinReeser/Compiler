@@ -12,6 +12,7 @@ int main(int argc , char** argv)
 	SimpleTextUtil util;
 	std::string postfix = util.convertInfixToPostfix( infix );
 	std::cout << "; " << postfix << std::endl;
+	std::cout << "; " << ( (12+(19*8+(2*56+(-304-2*(1001+(17-(16+(-22*(3+3*12)))))))))+60/12 ) << std::endl;
 	RPNNotation note;
 	note.convertStrToRPN( postfix );
 	std::string full = compFullCRPNSegment( note );

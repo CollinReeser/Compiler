@@ -1,11 +1,12 @@
 ; 12 19 8 * 2 56 * -304 2 1001 17 16 -22 3 3 12 * + * + - + * - + + + 60 12 / +
+; -3743
 		extern	printf
 		SECTION .data
 fmt:	db "%d", 10, 0
 		SECTION .text
 		global main
 main:
-	push	ebp
+	push		ebp
 	mov		ebp , esp
 	sub		esp , 4
 	mov		[esp] , dword 12
@@ -146,9 +147,9 @@ main:
 	sub		esp , 4
 	mov		[esp] , eax
 	mov		eax , [esp]
-	push	eax
-	push	dword fmt
-	call	printf
+	push		eax
+	push		dword fmt
+	call		printf
 	add		esp , 8
 	mov		esp , ebp
 	pop		ebp

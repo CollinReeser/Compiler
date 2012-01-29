@@ -1,4 +1,5 @@
-; 1.2 2.3 + 3.4 4.5 + + 5.6 6.7 + + 7.8 + 8.9 + 10.111 +
+; 1 2 / 3 * 4.5 + 6 3 / - 8.625 3 * + 2.5 3.4 1.25 / + - 8.2 +
+; 31.355
 		extern	printf
 		SECTION .data
 fmt:	db "%f", 10, 0
@@ -8,9 +9,28 @@ main:
 	push		ebp
 	mov		ebp , esp
 	sub		esp , 4
-	mov		[esp] , dword __float32__(1.2)
+	mov		[esp] , qword __float64__(1.0)
 	sub		esp , 4
-	mov		[esp] , dword __float32__(2.3)
+	mov		[esp] , qword __float64__(2.0)
+	mov		ebx , [esp]
+	add		esp , 4
+	mov		eax , [esp]
+	add		esp , 4
+	mov		edx , 0
+	div		ebx
+	sub		esp , 4
+	mov		[esp] , eax
+	sub		esp , 4
+	mov		[esp] , qword __float64__(3.0)
+	mov		ebx , [esp]
+	add		esp , 4
+	mov		eax , [esp]
+	add		esp , 4
+	mul		ebx
+	sub		esp , 4
+	mov		[esp] , eax
+	sub		esp , 4
+	mov		[esp] , qword __float64__(4.5)
 	fld		dword [esp]
 	add		esp , 4
 	fld		dword [esp]
@@ -19,43 +39,35 @@ main:
 	sub		esp , 4
 	fstp		dword [esp]
 	sub		esp , 4
-	mov		[esp] , dword __float32__(3.4)
+	mov		[esp] , qword __float64__(6.0)
 	sub		esp , 4
-	mov		[esp] , dword __float32__(4.5)
-	fld		dword [esp]
+	mov		[esp] , qword __float64__(3.0)
+	mov		ebx , [esp]
 	add		esp , 4
-	fld		dword [esp]
+	mov		eax , [esp]
 	add		esp , 4
-	faddp
+	mov		edx , 0
+	div		ebx
 	sub		esp , 4
-	fstp		dword [esp]
-	fld		dword [esp]
+	mov		[esp] , eax
+	mov		ebx , [esp]
 	add		esp , 4
-	fld		dword [esp]
+	mov		eax , [esp]
 	add		esp , 4
-	faddp
+	sub		eax , ebx
 	sub		esp , 4
-	fstp		dword [esp]
+	mov		[esp] , eax
 	sub		esp , 4
-	mov		[esp] , dword __float32__(5.6)
+	mov		[esp] , qword __float64__(8.625)
 	sub		esp , 4
-	mov		[esp] , dword __float32__(6.7)
-	fld		dword [esp]
+	mov		[esp] , qword __float64__(3.0)
+	mov		ebx , [esp]
 	add		esp , 4
-	fld		dword [esp]
+	mov		eax , [esp]
 	add		esp , 4
-	faddp
+	mul		ebx
 	sub		esp , 4
-	fstp		dword [esp]
-	fld		dword [esp]
-	add		esp , 4
-	fld		dword [esp]
-	add		esp , 4
-	faddp
-	sub		esp , 4
-	fstp		dword [esp]
-	sub		esp , 4
-	mov		[esp] , dword __float32__(7.8)
+	mov		[esp] , eax
 	fld		dword [esp]
 	add		esp , 4
 	fld		dword [esp]
@@ -64,7 +76,19 @@ main:
 	sub		esp , 4
 	fstp		dword [esp]
 	sub		esp , 4
-	mov		[esp] , dword __float32__(8.9)
+	mov		[esp] , qword __float64__(2.5)
+	sub		esp , 4
+	mov		[esp] , qword __float64__(3.4)
+	sub		esp , 4
+	mov		[esp] , qword __float64__(1.25)
+	mov		ebx , [esp]
+	add		esp , 4
+	mov		eax , [esp]
+	add		esp , 4
+	mov		edx , 0
+	div		ebx
+	sub		esp , 4
+	mov		[esp] , eax
 	fld		dword [esp]
 	add		esp , 4
 	fld		dword [esp]
@@ -72,8 +96,15 @@ main:
 	faddp
 	sub		esp , 4
 	fstp		dword [esp]
+	mov		ebx , [esp]
+	add		esp , 4
+	mov		eax , [esp]
+	add		esp , 4
+	sub		eax , ebx
 	sub		esp , 4
-	mov		[esp] , dword __float32__(10.111)
+	mov		[esp] , eax
+	sub		esp , 4
+	mov		[esp] , qword __float64__(8.2)
 	fld		dword [esp]
 	add		esp , 4
 	fld		dword [esp]

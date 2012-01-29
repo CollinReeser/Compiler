@@ -179,7 +179,21 @@ std::string compCRPNSegmentF( RPNNotation RPN )
 		else
 		{
 			segment += "\tsub\t\tesp , 4\n";
-			segment += "\tmov\t\t[esp] , dword __float32__(" +RPN.at(i)+ ")\n";
+			// If the individual number is not a float, even if the entire
+			// expression is considered to be a float, then just "convert" the
+			// number to a float by adding a ".0" at the end of the digits of
+			// the int. This occurs in the else block. The if block expects a
+			// true float
+			if ( RPN.isSingleFloat( i ) )
+			{
+				segment += "\tmov\t\t[esp] , qword __float64__(" + 
+					RPN.at(i) + ")\n";
+			}
+			else
+			{
+				segment += "\tmov\t\t[esp] , qword __float64__(" + 
+					RPN.at(i) + ".0)\n";
+			}
 		}
 	}
 	return segment;
@@ -197,7 +211,7 @@ std::string compFullCRPNSegment( RPNNotation RPN )
 	std::string full;
 	full += "\t\textern\tprintf\n"; // Gain access to printf
 	full += "\t\tSECTION .data\n";
-	if ( RPN.isFloat() )
+	if ( RPN.isExpressionFloat() )
 	{
 		full += "fmt:\tdb \"%f\", 10, 0\n";
 	}
@@ -212,7 +226,7 @@ std::string compFullCRPNSegment( RPNNotation RPN )
 	full += "\tmov\t\tebp , esp\n";
 	// If the expression contains floating point values, we need to evaluate
 	// the entire expression as though every value is floating point
-	if ( RPN.isFloat() )
+	if ( RPN.isExpressionFloat() )
 	{
 		full += compCRPNSegmentF( RPN );
 		full += "\tfld\t\tdword [esp]\n"; // The result is on the top of stack

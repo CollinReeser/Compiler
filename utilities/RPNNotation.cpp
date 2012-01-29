@@ -80,9 +80,15 @@ bool RPNNotation::isInitilized()
 	return ( ( RPNNotation::RPNStructure.size() > 0 ) ? true : false );
 }
 
-bool RPNNotation::isFloat()
+bool RPNNotation::isExpressionFloat()
 {
 	return ( ( RPNNotation::originalRPN.find(".") == std::string::npos ) ?
+		false : true );
+}
+
+bool RPNNotation::isSingleFloat( int i )
+{
+	return ( ( RPNNotation::at( i ).find(".") == std::string::npos ) ?
 		false : true );
 }
 
