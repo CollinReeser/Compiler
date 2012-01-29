@@ -1,3 +1,7 @@
+// This file is a test for the compCRPNSegmentI function, which produces an
+// assembly segment that computes the arithmetic result of an infix expression
+// consisting entirely of integer constants
+
 
 #include <string>
 #include <iostream>

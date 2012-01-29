@@ -1,3 +1,5 @@
+// This program tests the functionality of the RPNNotation class
+
 
 #include <string>
 #include "RPNNotation.h"

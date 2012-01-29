@@ -1,3 +1,8 @@
+// These functions implement the shunting yard algorithm, used to convert an
+// infix notation arithmetic expression to a postfix notation expression.
+// This function supports integer and floating point constants, as well as
+// variable names
+
 #include <string>
 #include <stack>
 #include <queue>
@@ -157,19 +162,19 @@ bool SimpleTextUtil::isOperator( char operatorCandidate )
 
 bool SimpleTextUtil::isOperator( std::string operatorCandidate )
 {
-	if ( operatorCandidate.compare( "*") == 0 )
+	if ( operatorCandidate.compare( "*" ) == 0 )
 	{
 		return true;
 	}
-	if ( operatorCandidate.compare( "/") == 0 )
+	if ( operatorCandidate.compare( "/" ) == 0 )
 	{
 		return true;
 	}
-	if ( operatorCandidate.compare( "+") == 0 )
+	if ( operatorCandidate.compare( "+" ) == 0 )
 	{
 		return true;
 	}
-	if ( operatorCandidate.compare( "-") == 0 )
+	if ( operatorCandidate.compare( "-" ) == 0 )
 	{
 		return true;
 	}

@@ -1,3 +1,8 @@
+// This file is a test for the compCRPNSegmentF function, which produces an
+// assembly segment that computes the arithmetic result of an infix expression
+// consisting of at least one floating point constant, where the rest of the
+// constants can be any mix of integer and floating point constants
+
 
 #include <string>
 #include <iostream>

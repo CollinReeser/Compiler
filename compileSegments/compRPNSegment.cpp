@@ -1,3 +1,7 @@
+// DEPRECTAED. All code in this file should not be expected to work toward any
+// purpose whatsoever, and should therefore not be used under any circumstances.
+
+
 #include "../utilities/SimpleTextUtil.h"
 #include "../utilities/RPNNotation.h"
 #include <string>

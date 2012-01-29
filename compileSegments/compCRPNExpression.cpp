@@ -223,7 +223,7 @@ std::string compCRPNSegmentF( RPNNotation RPN )
 
 
 
-// Same as compCRPNSegment, except additional code is provided at the beginning
+// Same as compCRPNSegments, except additional code is provided at the beginning
 // and the end such that it produces a complete assemble-able file that prints
 // the result of the expression to the terminal
 std::string compFullCRPNSegment( RPNNotation RPN )

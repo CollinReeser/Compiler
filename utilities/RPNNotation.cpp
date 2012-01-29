@@ -1,3 +1,8 @@
+// This file is the implementation of the class RPNNotation, which builds a
+// structure to house a provided post-fix notation string into an easily
+// queried form. The input of convertStrToRPN should be the output of a call to
+// SimpleTextUtil's function, convertInfixToPostfix(infix string)
+
 
 #include <string>
 #include <vector>
