@@ -6,7 +6,7 @@ fmt:	db "%d", 10, 0
 		SECTION .text
 		global main
 main:
-	push		ebp
+	push	ebp
 	mov		ebp , esp
 	sub		esp , 4
 	mov		[esp] , dword 12
@@ -147,9 +147,9 @@ main:
 	sub		esp , 4
 	mov		[esp] , eax
 	mov		eax , [esp]
-	push		eax
-	push		dword fmt
-	call		printf
+	push	eax
+	push	dword fmt
+	call	printf
 	add		esp , 8
 	mov		esp , ebp
 	pop		ebp

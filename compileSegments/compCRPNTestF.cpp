@@ -14,7 +14,8 @@ int main(int argc , char** argv)
 	std::string postfix = util.convertInfixToPostfix( infix );
 	std::cout << "; " << postfix << std::endl;
 	//std::cout << "; " << ( 1.2+2.3+(3.4 + 4.5) + (5.6 +6.7)+ 7.8+8.9+10.111 ) << std::endl;
-	std::cout << "; " << ( 1/2*3+4.5-6/3+8.625*3-(2.5+3.4/1.25)+8.2 ) << std::endl;
+	std::cout << "; " << ( 1/2*3+4.5-6/3+8.625*3-(2.5+3.4/1.25)+8.2 ) << 
+		" - Note that the actual output is probably more accurate than this" << std::endl;
 	RPNNotation note;
 	note.convertStrToRPN( postfix );
 	std::string full = compFullCRPNSegment( note );
