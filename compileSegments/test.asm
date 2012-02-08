@@ -1,5 +1,5 @@
-; 12 19 8 * 2 56 * -304 2 1001 17 16 -22 3 3 12 * + * + - + * - + + + 60 12 / +
-; -3743
+; 14 19 8 * 2 56 * -304 2 1001 17 16 -22 3 3 12 * + * + - + * - + + + 60 12 / +
+; -3741
 		extern	printf
 		SECTION .data
 fmt:	db "%d", 10, 0
@@ -9,7 +9,7 @@ main:
 	push	ebp
 	mov		ebp , esp
 	sub		esp , 4
-	mov		[esp] , dword 12
+	mov		[esp] , dword 14
 	sub		esp , 4
 	mov		[esp] , dword 19
 	sub		esp , 4
