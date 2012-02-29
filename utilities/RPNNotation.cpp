@@ -13,6 +13,8 @@ using namespace std;
 
 void RPNNotation::convertStrToRPN( std::string RPN )
 {
+	// Clear any previous RPN structure
+	RPNNotation::RPNStructure.clear();
 	RPNNotation::originalRPN = RPN;
 	SimpleTextUtil util;
 	std::string temp;

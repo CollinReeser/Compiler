@@ -8,37 +8,64 @@
 // TODO: This integer expression collapsing function is completely untested.
 // So, obviously, write a test program that verifies the expected behavior
 
+// For debugging purposes
+//#define TEST
+
 #include "SimpleTextUtil.h"
 #include "RPNNotation.h"
 #include <string>
 #include <stack>
 #include <sstream>
 #include <vector>
+#ifdef TEST
+#include <iostream>
+#endif
 
 extern void collapseRPNI( RPNNotation& RPN );
 
 int calcCollapseI( int valOne , int valTwo , std::string oper )
 {
+#ifdef TEST
+	std::cout << "calcCollapseI entered." << std::endl;
+#endif
 	if ( oper.compare( "+" ) == 0 )
 	{
+#ifdef TEST
+	std::cout << "calcCollapseI exited in addition." << std::endl;
+#endif
 		return valOne + valTwo;
 	}
 	else if ( oper.compare( "-" ) == 0 )
 	{
+#ifdef TEST
+	std::cout << "calcCollapseI exited in subtraction." << std::endl;
+#endif
 		return valOne - valTwo;
 	}
 	else if ( oper.compare( "*" ) == 0 )
 	{
+#ifdef TEST
+	std::cout << "calcCollapseI exited in multiplication." << std::endl;
+#endif
 		return valOne * valTwo;
 	}
 	else if ( oper.compare( "/" ) == 0 )
 	{
+#ifdef TEST
+	std::cout << "calcCollapseI exited in division." << std::endl;
+#endif
 		return valOne / valTwo;
 	}
 	else if ( oper.compare( "%" ) == 0 )
 	{
+#ifdef TEST
+	std::cout << "calcCollapseI exited in modulus." << std::endl;
+#endif
 		return valOne % valTwo;
 	}
+#ifdef TEST
+	std::cout << "calcCollapseI abnormally exited." << std::endl;
+#endif
 	// Failure, but this should never be reached ever
 	return 0;
 }
@@ -85,17 +112,27 @@ void collapseRPNI( RPNNotation& RPN )
 					// values were not variable strings
 					if ( !ss1.fail() && !ss2.fail() )
 					{
+#ifdef TEST
+						std::cout << "First value:\t" << valOne << "\n";
+						std::cout << "Second value:\t" << valTwo << "\n";
+						std::cout << "Operator\t" << structCopy.at( i + 2 );
+						std::cout << std::endl;
+#endif
 						// Calculate result of collapsing operation
 						valResult = calcCollapseI( valOne , valTwo , 
 							structCopy.at( i + 2 ) );
+#ifdef TEST
+						std::cout << "Result:\t\t" << valResult << std::endl;
+#endif
 						// Convert the calculated integer to a string
 						std::stringstream resultConverter;
 						std::string reductionResult;
 						resultConverter << valResult;
 						reductionResult = resultConverter.str();
-						// Erase the two values and the operator
+						// Erase the two values and the operator. Note that it
+						// is ... + i + 3 because the range is right-exclusive
 						structCopy.erase( structCopy.begin() + i , 
-							structCopy.begin() + i + 2 );
+							structCopy.begin() + i + 3 );
 						// Insert the collapsed value
 						structCopy.insert( structCopy.begin() + i , 
 							reductionResult );
