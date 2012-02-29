@@ -1,5 +1,7 @@
 
 
-all:	git
-git:	
-		/bin/sh	Commit.sh
+commit:	
+	/bin/sh	Commit.sh
+
+pull:
+	/bin/sh Pull.sh
