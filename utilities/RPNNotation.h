@@ -15,6 +15,10 @@ public:
 	bool isExpressionFloat();
 	// Checks if there is a floating point value at the index provided
 	bool isSingleFloat( int i );
+	// See RPNCollapse.cpp - This function is used to simplify the expression
+	// before assembly. This particular function operates on known-to-be
+	// exclusively integer-based expressions
+	friend void collapseRPNI( RPNNotation& RPN );
 	
 private:
 	std::vector<std::string> RPNStructure;

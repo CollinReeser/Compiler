@@ -1,6 +1,6 @@
 all:	utilities tests
 
-utilities:	ShuntingYard.o SourceRead.o SimpleTextUtil.h StripComments.o RPNNotation.o MiscTextUtil.o
+utilities:	ShuntingYard.o SourceRead.o SimpleTextUtil.h StripComments.o RPNNotation.o MiscTextUtil.o RPNCollapse.o
 
 ShuntingYard.o:	ShuntingYard.cpp SimpleTextUtil.h
 		g++ -c ShuntingYard.cpp
@@ -16,6 +16,9 @@ StripComments.o:	StripComments.cpp SimpleTextUtil.h
 
 RPNNotation.o:	RPNNotation.cpp RPNNotation.h
 		g++ -c RPNNotation.cpp
+		
+RPNCollapse.o:	RPNCollapse.cpp RPNNotation.h
+		g++ -c RPNCollapse.cpp
 
 tests:	utilities shunt sourceReadTest rpnTest
 

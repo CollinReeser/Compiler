@@ -51,11 +51,12 @@ public:
 	// This strips the whitespace out of a string. Generally to be used on
 	// single tokens
 	std::string stripWhitespace(std::string str);
-	
+	// Found in ShuntingYard.cpp
 	bool isOperator( char operatorCandidate );
 	// This one is for tokenizing and includes many more one character operator
-	// tokens
+	// tokens. Found in MiscTextUtil.cpp
 	bool isOperatorT( char operatorCandidate );
+	// Found in ShuntingYard.cpp
 	bool isOperator( std::string operatorCandidate );
 private:
 	//Private vars and functions used by convertInfixToPostfix

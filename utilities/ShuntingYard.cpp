@@ -3,6 +3,9 @@
 // This function supports integer and floating point constants, as well as
 // variable names
 
+// TODO: Uncomment mod (%) as an operator, and add support for mod operations
+// in the arithmetic expression assembler and several other functions
+
 #include <string>
 #include <stack>
 #include <queue>
@@ -154,6 +157,8 @@ bool SimpleTextUtil::isOperator( char operatorCandidate )
 		case '-':
 		case '*':
 		case '/':
+		// See isOperator(string) and above
+		//case '%':
 			return true;
 		default:
 			return false;
@@ -178,6 +183,14 @@ bool SimpleTextUtil::isOperator( std::string operatorCandidate )
 	{
 		return true;
 	}
+	// In order to add support for mod, need to update the arithmetic expression
+	// assembler, as well as several other things
+	/*
+	if ( operatorCandidate.compare( "%" ) == 0 )
+	{
+		return true;
+	}
+	*/
 	return false;
 }
 
