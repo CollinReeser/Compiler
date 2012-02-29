@@ -1,11 +1,12 @@
-cp -u Commit.sh gitCompiler/
-cp -u Pull.sh gitCompiler/
-cp -r -u compileSegments gitCompiler/
-cp -r -u LexParse gitCompiler/
-cp -r -u tests gitCompiler/
-cp -r -u utilities gitCompiler/
-cp -r -u asm gitCompiler/
-cp -u Makefile gitCompiler/
+cp -u -v Commit.sh gitCompiler/
+cp -u -v .gitignore gitCompiler/
+cp -u -v Pull.sh gitCompiler/
+cp -r -u -v compileSegments gitCompiler/
+cp -r -u -v LexParse gitCompiler/
+cp -r -u -v tests gitCompiler/
+cp -r -u -v utilities gitCompiler/
+cp -r -u -v asm gitCompiler/
+cp -u -v Makefile gitCompiler/
 
 cd gitCompiler
 ls | xargs git add

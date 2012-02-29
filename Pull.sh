@@ -2,11 +2,12 @@ cd gitCompiler
 
 git pull
 
-cp -u Commit.sh ../
-cp -u Pull.sh ../
-cp -r -u compileSegments ../
-cp -r -u LexParse ../
-cp -r -u tests ../
-cp -r -u utilities ../
-cp -r -u asm ../
-cp -u Makefile ../
+cp -u -v Commit.sh ../
+cp -u -v Pull.sh ../
+cp -u -v .gitignore ../
+cp -r -u -v compileSegments ../
+cp -r -u -v LexParse ../
+cp -r -u -v tests ../
+cp -r -u -v utilities ../
+cp -r -u -v asm ../
+cp -u -v Makefile ../
