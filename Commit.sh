@@ -1,6 +1,7 @@
 cp -u -v Commit.sh gitCompiler/
 cp -u -v .gitignore gitCompiler/
 cp -u -v Pull.sh gitCompiler/
+cp -u -v README gitCompiler/
 cp -r -u -v compileSegments gitCompiler/
 cp -r -u -v LexParse gitCompiler/
 cp -r -u -v tests gitCompiler/

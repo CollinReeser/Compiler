@@ -1,0 +1,11 @@
+The development environment for this compiler is set up as such: When initially 
+cloning the repository, clone it inside a folder called "gitCompiler" inside 
+your actual working environment. Then, copy everything but the ".git" folder to 
+your outer working directory, which should be one level up. From here, you 
+should be able to "make commit" and "make pull" inside the working directory, 
+where the inner git directory is updated correctly and updates your working 
+directory accordingly.
+
+I recongize that this is incredibly foobar and at some point I will fix this so 
+that it actually makes any sense. I developed this system in tandem with 
+learning the absolute basics of git, and since it works, I fear for breaking it.

@@ -5,6 +5,7 @@ git pull
 cp -u -v Commit.sh ../
 cp -u -v Pull.sh ../
 cp -u -v .gitignore ../
+cp -u -v README ../
 cp -r -u -v compileSegments ../
 cp -r -u -v LexParse ../
 cp -r -u -v tests ../
