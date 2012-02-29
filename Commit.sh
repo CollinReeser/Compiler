@@ -9,6 +9,6 @@ cp -r -u -v asm gitCompiler/
 cp -u -v Makefile gitCompiler/
 
 cd gitCompiler
-ls -a | xargs git add
+ls -A | xargs git add
 git commit -a
 git push -u origin master
