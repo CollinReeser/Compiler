@@ -1,4 +1,4 @@
-echo -e "n\NOTE: Panicking on \"develEnvSimp\" branch."
+echo -e "\nNOTE: Panicking on \"develEnvSimp\" branch."
 git checkout develEnvSimp
 git reset ORIG_HEAD --hard
-echo "Note: Current working branch is now develEnvSimp"
+echo -e "\nNOTE: Current working branch is now \"develEnvSimp\"\n"
