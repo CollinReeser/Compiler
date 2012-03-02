@@ -1,1 +1,1 @@
-git pull develEnvSimp develEnvSimp
+git pull

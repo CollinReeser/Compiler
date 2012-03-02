@@ -1,1 +1,1 @@
-git pull master master
+git pull

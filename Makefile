@@ -17,3 +17,6 @@ panicds:
 	
 panicm:
 	/bin/sh PanicDS.sh
+	
+setup-track:
+	/bin/sh SetupRemoteTracking.sh
