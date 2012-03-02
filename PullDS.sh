@@ -1,3 +1,3 @@
 git checkout develEnvSimp
-echo "Note: Current working branch is now develEnvSimp"
+echo -e "n\NOTE: Current working branch is now develEnvSimp\n"
 git pull

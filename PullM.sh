@@ -1,3 +1,3 @@
 git checkout master
-echo "Note: Current working branch is now master"
+echo -e "n\NOTE: Current working branch is now master\n"
 git pull
