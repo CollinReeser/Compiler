@@ -1,3 +1,9 @@
+This branch is designed to fix the development environment so that it is not
+completely foobar. This branch will work in the way that a git repository
+should be developed for.
+
+OLD README:
+
 The development environment for this compiler is set up as such: When initially 
 cloning the repository, clone it inside a folder called "gitCompiler" inside 
 your actual working environment. 

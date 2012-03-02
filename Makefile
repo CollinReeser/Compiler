@@ -1,7 +1,19 @@
 
 
-commit:	
-	/bin/sh	Commit.sh
+commitm:	
+	/bin/sh	CommitM.sh
+	
+commitds:
+	/bin/sh CommitDS.sh
 
-pull:
-	/bin/sh Pull.sh
+pullm:
+	/bin/sh PullM.sh
+	
+pullds:
+	/bin/sh PullDS.sh
+	
+panicds:
+	/bin/sh PanicDS.sh
+	
+panicm:
+	/bin/sh PanicDS.sh
