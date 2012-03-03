@@ -1,3 +1,8 @@
+Things are slowly becoming copacetic and friendly to a new cloner. Soon, I shall
+merge the simplification-branch into the main branch and all shall be well.
+
+Old README:
+
 This branch is designed to fix the development environment so that it is not
 completely foobar. This branch will work in the way that a git repository
 should be developed for.
