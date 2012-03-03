@@ -1,0 +1,3 @@
+git push origin :[branchname] // Will delete the remote branch of name 
+// "branchname", where the brackets are not part of the actual command but the
+// colon is
