@@ -13,6 +13,10 @@
 ; there should be an integer at [ebp+13] on the stack. Etc.
 ; Return parameters: None.
 ;
+; NOTE: This doesn't work at all. Not even a little. Nope. And is also probably
+; identical to printf.asm and should be removed. They should both be removed
+; probably definitely.
+;
 
 ; %s should be converted to -1
 ; %d should be converted to -2

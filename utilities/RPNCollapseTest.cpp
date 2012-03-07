@@ -1,6 +1,8 @@
 // This program tests the functionality of the RPNCollapseI function, and should
 // also eventually test the yet-to-exist RPNCollapseF function
 
+#define FIRST_VAL (14+(19*8+(2* 56 +(-304-2*(1001+(17-(16+(-22*(3+3*12)))))))))+60/12
+
 #include "RPNNotation.h"
 #include "SimpleTextUtil.h"
 #include <string>
@@ -9,8 +11,8 @@
 
 int main( int argc , char** argv )
 {
-	std::string infix = "(14+(19*8+(2*56+(-304-2*(1001+(17-(16+(-22*(3+3*12)))))))))+60/12";
-	int val = (14+(19*8+(2*56+(-304-2*(1001+(17-(16+(-22*(3+3*12)))))))))+60/12;
+	std::string infix = "FIRST_VAL";
+	int val = FIRST_VAL;
 	SimpleTextUtil util;
 	std::string postfix = util.convertInfixToPostfix( infix );
 	RPNNotation note;

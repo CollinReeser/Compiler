@@ -5,9 +5,6 @@
 // an arbitrary-length expression with only constants would be reduced to one
 // constant
 
-// TODO: This integer expression collapsing function is completely untested.
-// So, obviously, write a test program that verifies the expected behavior
-
 // For debugging purposes
 //#define TEST
 
