@@ -1,28 +1,9 @@
-Things are slowly becoming copacetic and friendly to a new cloner. Soon, I shall
-merge the simplification-branch into the main branch and all shall be well.
+A work-in-progress compiler that promises no functionality.
 
-Old README:
-
-This branch is designed to fix the development environment so that it is not
-completely foobar. This branch will work in the way that a git repository
-should be developed for.
-
-OLD README:
-
-The development environment for this compiler is set up as such: When initially 
-cloning the repository, clone it inside a folder called "gitCompiler" inside 
-your actual working environment. 
-
-Use the command, while inside "gitCompiler", 
+Currently of interest is a barebones implementation of printf in C that
+promintently features mostly-working floating-point printing support, a
+simple tokenizer, a robust implementation of the shunting-yard algorithm, and
+an arithmetic-expression compiler that supports both integer and floating-point
+expressions that compiles to native x86 assembly.
 
 "git clone git@github.com:CollinReeser/Compiler.git"
-
-Then, copy everything but the ".git" folder to 
-your outer working directory, which should be one level up. From here, you 
-should be able to "make commit" and "make pull" inside the working directory, 
-where the inner git directory is updated correctly and updates your working 
-directory accordingly.
-
-I recongize that this is incredibly foobar and at some point I will fix this so 
-that it actually makes any sense. I developed this system in tandem with 
-learning the absolute basics of git, and since it works, I fear for breaking it.
