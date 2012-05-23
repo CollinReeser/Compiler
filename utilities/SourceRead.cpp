@@ -21,12 +21,11 @@ std::vector<std::string> SimpleTextUtil::fileToLines( std::string fileName )
 	std::string temp;
 	while( std::getline( ifs, temp ) )
 	{
-		textFile.push_back( temp );
-		// This is to ensure the tokenizer does not get confused about tokens
+		// The " " is to ensure the tokenizer does not get confused about tokens
 		// on separate lines, ie, thinking that the token on the end of a line
 		// is part of the token on the beginning of the next line, because there
 		// was no whitespace besides a newline between them
-		textFile.push_back( " " );
+		textFile.push_back( temp + " " );
 	}
 	ifs.close();
 	return textFile;

@@ -63,3 +63,17 @@ WhileContainer.o:	WhileContainer.cpp WhileContainer.h ScopeContainer.h
 StatementContainer.o:	StatementContainer.h
 	g++ -c StatementContainer.cpp
 	
+clean:
+	rm ClassContainer.o
+	rm FunctionContainer.o
+	rm lexer.o
+	rm parser.o
+	rm testLex.o
+	rm testParse.o
+	rm ParseContainer.o
+	rm TopLevelContainer.o
+	
+realclean:	clean
+	rm testLex
+	rm testParse
+	
