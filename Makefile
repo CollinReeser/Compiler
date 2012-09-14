@@ -1,23 +1,11 @@
+all: 
+	cd LexParse && $(MAKE)
+	cd asm && $(MAKE)
+	cd compileSegments && $(MAKE)
+	cd utilities && $(MAKE)
 
-
-commitm:	
-	/bin/sh	CommitM.sh
-
-pullm:
-	/bin/sh PullM.sh
-	
-panicm:
-	/bin/sh PanicDS.sh
-	
-#commitds:
-	/bin/sh CommitDS.sh
-	
-#pullds:
-#	/bin/sh PullDS.sh
-	
-#panicds:
-#	/bin/sh PanicDS.sh
-
-
-setup-track:
-	/bin/sh SetupRemoteTracking.sh
+clean:
+	cd LexParse && $(MAKE) clean
+	cd asm && $(MAKE) clean
+	cd compileSegments && $(MAKE) clean
+	cd utilities && $(MAKE) clean

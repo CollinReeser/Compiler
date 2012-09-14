@@ -126,7 +126,7 @@ void printI(int num)
 void printLDub(unsigned long long num)
 {
 	char zeroTrip = '1';
-	unsigned long long divisor;
+	unsigned long long int divisor;
 	char mod;
 	if (sizeof(long long) == 8)
 	{

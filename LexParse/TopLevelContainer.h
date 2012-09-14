@@ -3,8 +3,6 @@
 
 #include <vector>
 #include <string>
-#include "ClassContainer.h"
-#include "FunctionContainer.h"
 #include "ParseContainer.h"
 #include "Structs.h"
 
@@ -23,8 +21,6 @@ private:
 	// where local things are kept in quotes, and library things are in wakas
 	std::vector<include> includes;
 	std::vector<std::string> globalVariableStatements;
-	std::vector<ClassContainer> classDefinitions;
-	std::vector<FunctionContainer> globalFunctionDefinitions;
 	ParseContainer parsing;
 };
 

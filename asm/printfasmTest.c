@@ -15,7 +15,7 @@ int main(int argc , char** argv)
 	infinite.infin2 = j;
 	char* str = "Hello\n%d\n%f\n";
 	printf("Size of long int: %d\n",sizeof(long long));
-	long long test = 0x7FFFFFFFFFFFFFFF;
+	long long int test = 0x7FFFFFFFFFFFFFFF;
 	int test2 = 0x7FFFFFFF;
 	printf("digits: %lld\n",test);
 	printf("digits: %d\n",test2);

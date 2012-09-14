@@ -6,8 +6,6 @@
 #include "parser.h"
 #include "ParseContainer.h"
 #include "TopLevelContainer.h"
-#include "ClassContainer.h"
-#include "FunctionContainer.h"
 
 TopLevelContainer Parser::parse( std::string fileName )
 {

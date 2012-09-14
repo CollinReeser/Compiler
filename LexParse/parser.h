@@ -6,8 +6,6 @@
 #include <string>
 #include "ParseContainer.h"
 #include "TopLevelContainer.h"
-#include "ClassContainer.h"
-#include "FunctionContainer.h"
 
 class Parser
 {
